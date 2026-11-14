@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b08">
+  <title>Our Menu | Caribbean Gourmet Restaurant</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #080908;
+      --card: #17130f;
+      --green: #092b1d;
+      --gold: #d4af70;
+      --gold-light: #f2d69a;
+      --cream: #fff7e8;
+      --muted: #d5cbbd;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--cream);
+      font-family: "Montserrat", sans-serif;
+      line-height: 1.6;
+    }
+
+    body.lightbox-open {
+      overflow: hidden;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* HEADER */
+
+    .site-header {
+      position: relative;
+      z-index: 100;
+      background: #050605;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .header-inner {
+      max-width: 1400px;
+      margin: auto;
+      min-height: 110px;
+      padding: 12px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .site-logo {
+      width: 110px;
+      height: auto;
+    }
+
+    .main-navigation {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .main-navigation a {
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
+
+    .main-navigation a:hover,
+    .main-navigation a.active {
+      color: var(--gold);
+    }
+
+    .main-navigation a.active {
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 7px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      border-radius: 5px;
+      padding: 7px 13px;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    /* EMERALD MENU BANNER */
+
+    .menu-banner {
+      height: 500px;
+      width: 100%;
+      background-image: url("images/menu-banner.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: var(--green);
+    }
+
+    /* MAIN CONTENT */
+
+    .container {
+      width: min(1200px, 90%);
+      margin: auto;
+    }
+
+    .menu-introduction {
+      text-align: center;
+      padding: 70px 0 35px;
+    }
+
+    .script-heading {
+      font-family: "Great Vibes", cursive;
+      color: var(--gold);
+      font-size: clamp(30px, 4vw, 45px);
+      font-weight: 400;
+      line-height: 1.3;
+      margin: 0 0 10px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Playfair Display", serif;
+    }
+
+    .menu-introduction h1 {
+      color: var(--gold-light);
+      font-size: clamp(30px, 4vw, 44px);
+      margin: 0 0 15px;
+    }
+
+    .gold-divider {
+      width: 75px;
+      height: 2px;
+      background: var(--gold);
+      margin: 18px auto 25px;
+    }
+
+    .section-description {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .featured-menu {
+      max-width: 960px;
+      margin: 45px auto 0;
+    }
+
+    .featured-menu img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 175, 112, 0.5);
+      cursor: pointer;
+    }
+
+    /* SECTION HEADINGS */
+
+    .menu-section {
+      padding: 55px 0 70px;
+      scroll-margin-top: 30px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+      color: var(--gold-light);
+      font-size: clamp(27px, 3.5vw, 39px);
+      line-height: 1.3;
+      margin: 5px 0;
+    }
+
+    /* CATEGORY LINKS */
+
+    .menu-categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 30px 0 15px;
+    }
+
+    .menu-categories a {
+      color: var(--gold-light);
+      border: 1px solid rgba(212, 175, 112, 0.65);
+      border-radius: 30px;
+      padding: 10px 17px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .menu-categories a:hover {
+      background: var(--gold);
+      color: #080908;
+    }
+
+    /* FOOD: THREE COLUMNS */
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    /* DRINKS: TWO COLUMNS */
+
+    .drinks-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      max-width: 1000px;
+      margin: auto;
+      align-items: stretch;
+    }
+
+    /* MENU CARDS */
+
+    .menu-card {
+      background: var(--card);
+      border: 1px solid rgba(212, 175, 112, 0.8);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(212, 175, 112, 0.12);
+    }
+
+    .card-image {
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: #111;
+      cursor: zoom-in;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 225px;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .drinks-grid .card-image img {
+      height: 275px;
+    }
+
+    .card-image:hover img {
+      transform: scale(1.045);
+    }
+
+    .card-image::after {
+      content: "View Details +";
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      padding: 6px 10px;
+      color: var(--gold-light);
+      font-size: 11px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .card-image:hover::after,
+    .card-image:focus-visible::after {
+      opacity: 1;
+    }
+
+    .card-content {
+      padding: 23px 20px 28px;
+      text-align: center;
+      flex: 1;
+    }
+
+    .card-content h3 {
+      color: var(--gold-light);
+      font-size: 21px;
+      margin: 0 0 12px;
+    }
+
+    .card-content p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* FEATURED INDEPENDENCE DISH */
+
+    .independence-feature {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .independence-feature .card-image img {
+      height: auto;
+      max-height: 520px;
+      object-fit: contain;
+    }
+
+    /* LIGHTBOX */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.96);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 65px 60px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-panel {
+      width: min(1150px, 100%);
+      max-height: 85vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+      background: #15110e;
+      border: 1px solid var(--gold);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .lightbox-photo {
+      background: #050505;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 300px;
+      overflow: hidden;
+    }
+
+    .lightbox-photo img {
+      max-width: 100%;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .lightbox-details {
+      padding: 35px;
+      overflow-y: auto;
+      align-self: center;
+    }
+
+    .lightbox-details h2 {
+      color: var(--gold-light);
+      font-size: 29px;
+      margin: 0 0 15px;
+    }
+
+    .lightbox-details p {
+      color: var(--cream);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      background: #17130f;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-close {
+      top: 15px;
+      right: 20px;
+      width: 43px;
+      height: 43px;
+      border-radius: 50%;
+      font-size: 27px;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 55px;
+      font-size: 30px;
+    }
+
+    .lightbox-prev {
+      left: 10px;
+    }
+
+    .lightbox-next {
+      right: 10px;
+    }
+
+    /* FOOTER */
+
+    .site-footer {
+      border-top: 1px solid var(--gold);
+      background: #050605;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .site-footer h2 {
+      color: var(--gold-light);
+      font-size: 25px;
+      margin: 0 0 10px;
+    }
+
+    .site-footer p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .footer-links a {
+      color: var(--gold);
+      font-size: 12px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .header-inner {
+        min-height: 85px;
+      }
+
+      .site-logo {
+        width: 85px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .main-navigation {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 25px;
+        background: #080908;
+        border-bottom: 1px solid var(--gold);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+      }
+
+      .main-navigation.open {
+        display: flex;
+      }
+
+      .main-navigation a {
+        font-size: 13px;
+        padding: 8px;
+      }
+
+      .food-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .menu-banner {
+        height: 320px;
+      }
+
+      .lightbox-panel {
+        grid-template-columns: 1fr;
+        overflow-y: auto;
+      }
+
+      .lightbox-photo img {
+        max-height: 45vh;
+      }
+
+      .lightbox-details {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: 92%;
+      }
+
+      .menu-banner {
+        height: 230px;
+      }
+
+      .menu-introduction {
+        padding-top: 45px;
+      }
+
+      .menu-section {
+        padding: 35px 0 50px;
+      }
+
+      .food-grid,
+      .drinks-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .card-image img,
+      .drinks-grid .card-image img {
+        height: auto;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+      }
+
+      .card-content {
+        padding: 20px;
+      }
+
+      .lightbox {
+        padding: 65px 15px 25px;
+      }
+
+      .lightbox-panel {
+        max-height: 85vh;
+      }
+
+      .lightbox-photo {
+        min-height: 180px;
+      }
+
+      .lightbox-photo img {
+        max-height: 45vh;
+      }
+
+      .lightbox-prev,
+      .lightbox-next {
+        top: auto;
+        bottom: 8px;
+        transform: none;
+        width: 42px;
+        height: 42px;
+      }
+
+      .lightbox-prev {
+        left: 20px;
+      }
+
+      .lightbox-next {
+        right: 20px;
+      }
+    }
+    /* =========================================
+   CARIBBEAN GOURMET
+   MENU ALIGNMENT CORRECTIONS
+========================================= */
+
+/* Center the barbecue cards */
+#barbecue .food-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* Keep food cards balanced */
+.food-grid {
+    justify-content: center;
+}
+
+/* Keep drink cards centered */
+.drinks-grid {
+    justify-content: center;
+}
+
+/* Reduce excessive spacing */
+.menu-section {
+    padding-top: 40px;
+    padding-bottom: 45px;
+}
+
+/* Consistent image presentation */
+.menu-card .card-image img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    #barbecue .food-grid {
+        grid-template-columns: 1fr;
+    }
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a href="index.html" aria-label="Caribbean Gourmet Restaurant Home">
+        <img class="site-logo" src="images/logo.png" alt="Caribbean Gourmet Restaurant Logo">
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-controls="navLinks"
+        aria-expanded="false">
+        &#9776;
+      </button>
+
+      <nav class="main-navigation" id="navLinks" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">Our Story</a>
+        <a href="menu.html" class="active" aria-current="page">Menu</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="index.html#vip">VIP Experience</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- EMERALD GREEN BANNER -->
+
+  <section class="menu-banner" aria-label="Caribbean Gourmet Restaurant menu banner"></section>
+
+  <main>
+
+    <!-- INTRODUCTION -->
+
+    <section class="menu-introduction">
+      <div class="container">
+
+        <p class="script-heading">A Celebration of Haitian Heritage</p>
+        <h1>Our Menu</h1>
+        <div class="gold-divider"></div>
+
+        <p class="section-description">
+          Discover the authentic flavors of Haiti, thoughtfully presented
+          with the elegance of Caribbean fine dining.
+          From traditional family recipes to signature beverages,
+          every selection celebrates our rich culinary heritage.
+        </p>
+
+        <div class="featured-menu">
+          <img
+            src="images/haitian-menu.png"
+            alt="Caribbean Gourmet Restaurant complete Haitian menu"
+            class="lightbox-trigger"
+            tabindex="0"
+            role="button"
+            data-title="Our Haitian Culinary Heritage"
+            data-description="Explore our collection of traditional Haitian dishes, gourmet seafood, signature spirits, and refreshing tropical beverages.">
+        </div>
+
+        <nav class="menu-categories" aria-label="Menu categories">
+          <a href="#specialties">Haitian Specialties</a>
+          <a href="#seafood">Seafood</a>
+          <a href="#sides">Traditional Sides</a>
+          <a href="#barbecue">Barbecue</a>
+          <a href="#spirits">Haitian Spirits</a>
+          <a href="#beverages">Beverages</a>
+        </nav>
+
+      </div>
+    </section>
+
+    <!-- HAITIAN SPECIALTIES -->
+
+    <section class="menu-section" id="specialties">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="script-heading">Taste of Haiti</p>
+          <h2>Authentic Haitian Specialties</h2>
+          <div class="gold-divider"></div>
+          <p class="section-description">
+            Traditional Haitian recipes prepared with rich seasonings,
+            fresh ingredients, and culinary passion.
+          </p>
+        </div>
+
+        <div class="food-grid">
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/fried-pork.png" alt="Haitian Griot">
+            </button>
+            <div class="card-content">
+              <h3>Griot — Haitian Fried Pork</h3>
+              <p>
+                Tender pieces of marinated pork, fried until golden
+                with beautifully crisp skin and authentic Haitian spices.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/fried-beef.png" alt="Haitian Tasso Beef">
+            </button>
+            <div class="card-content">
+              <h3>Tasso Beef</h3>
+              <p>
+                Traditional Haitian fried beef, seasoned with aromatic
+                herbs, citrus, and bold Creole spices.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/fried-goat.png" alt="Haitian Fried Goat">
+            </button>
+            <div class="card-content">
+              <h3>Tasso Cabrit — Fried Goat</h3>
+              <p>
+                Succulent goat meat marinated in Haitian seasonings
+                and fried to a rich, flavorful finish.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/haitian-spaghetti.png" alt="Haitian Spaghetti">
+            </button>
+            <div class="card-content">
+              <h3>Haitian Spaghetti</h3>
+              <p>
+                A beloved Haitian favorite prepared with savory
+                seasonings, sliced hot dogs, and smoked herring.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/haitian-dish.png" alt="Haitian Legume">
+            </button>
+            <div class="card-content">
+              <h3>Haitian Legume</h3>
+              <p>
+                A richly seasoned vegetable medley served with
+                rice, creamy bean sauce, and fresh vegetables.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/boillon.png" alt="Traditional Haitian Bouillon">
+            </button>
+            <div class="card-content">
+              <h3>Haitian Bouillon</h3>
+              <p>
+                A hearty traditional soup filled with tender meat,
+                root vegetables, fresh herbs, and warming Haitian spices.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TRADITIONAL SIDES -->
+
+    <section class="menu-section" id="sides">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="script-heading">Traditional Favorites</p>
+          <h2>Haitian Sides &amp; Appetizers</h2>
+          <div class="gold-divider"></div>
+        </div>
+
+        <div class="food-grid">
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/fried-platains.png" alt="Banan Peze">
+            </button>
+            <div class="card-content">
+              <h3>Banan Peze</h3>
+              <p>
+                Traditional pressed green plantains, fried until
+                golden, crispy, and irresistibly delicious.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/akra.png" alt="Haitian Akra">
+            </button>
+            <div class="card-content">
+              <h3>Akra</h3>
+              <p>
+                Authentic Haitian finger-shaped malanga fritters,
+                seasoned with herbs and fried until crisp.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/marinad.png" alt="Haitian Marinad">
+            </button>
+            <div class="card-content">
+              <h3>Marinad</h3>
+              <p>
+                Delicious Haitian savory fritters prepared with
+                seasoned dough and fried until golden and fluffy.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEAFOOD -->
+
+    <section class="menu-section" id="seafood">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="script-heading">From the Caribbean Sea</p>
+          <h2>Gourmet Haitian Seafood</h2>
+          <div class="gold-divider"></div>
+        </div>
+
+        <div class="food-grid">
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/fried-red-snapper.png" alt="Whole Haitian Red Snapper">
+            </button>
+            <div class="card-content">
+              <h3>Whole Red Snapper</h3>
+              <p>
+                A magnificent whole red snapper, beautifully prepared
+                with Haitian seasonings and accompanied by pikliz
+                and fresh citrus.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/conch.png" alt="Haitian Lambi Conch">
+            </button>
+            <div class="card-content">
+              <h3>Lambi — Haitian Conch</h3>
+              <p>
+                Tender Caribbean conch prepared Creole-style
+                with aromatic herbs, peppers, and traditional
+                Haitian seasonings.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/red-snipper-red-lobster.png" alt="Red Snapper and Lobster">
+            </button>
+            <div class="card-content">
+              <h3>Red Snapper &amp; Lobster</h3>
+              <p>
+                An elegant seafood presentation celebrating the
+                freshness of Caribbean waters with beautifully
+                prepared snapper and lobster.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BARBECUE -->
+
+    <section class="menu-section" id="barbecue">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="script-heading">Bold Caribbean Flavors</p>
+          <h2>Barbecue &amp; Signature Sauces</h2>
+          <div class="gold-divider"></div>
+        </div>
+
+        <div class="food-grid">
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/bbq-ribs.png" alt="Haitian Barbecue Ribs">
+            </button>
+            <div class="card-content">
+              <h3>Haitian Barbecue Ribs</h3>
+              <p>
+                Tender, beautifully grilled ribs coated in our
+                signature Haitian barbecue sauce, served with
+                rich, smoky Caribbean flavors.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/bbq-sauce.png" alt="Haitian Barbecue Sauce Collection">
+            </button>
+            <div class="card-content">
+              <h3>Signature Barbecue Sauces</h3>
+              <p>
+                Discover our Haitian barbecue sauce collection,
+                featuring distinctive flavors crafted to complement
+                our grilled specialties.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SOUP JOUMOU -->
+
+    <section class="menu-section" id="joumou">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="script-heading">A Taste of Freedom</p>
+          <h2>Our Independence Day Signature Dish</h2>
+          <div class="gold-divider"></div>
+        </div>
+
+        <article class="menu-card independence-feature">
+          <button class="card-image" type="button">
+            <img src="images/pumpkin-soup.png" alt="Soup Joumou — Haitian Independence Day 1804">
+          </button>
+
+          <div class="card-content">
+            <h3>Soup Joumou — Independence Day 1804</h3>
+            <p>
+              Haiti's cherished pumpkin soup, traditionally enjoyed
+              on January 1 to celebrate the nation's independence
+              in 1804. More than a meal, Soup Joumou represents
+              freedom, resilience, and Haitian pride.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- HAITIAN SPIRITS AND KREMAS -->
+
+    <section class="menu-section" id="spirits">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="script-heading">The Spirit of Haiti</p>
+          <h2>Haitian Spirits &amp; Traditional Kremas</h2>
+          <div class="gold-divider"></div>
+          <p class="section-description">
+            Discover our celebrated Haitian rum collection
+            and the rich, creamy flavors of traditional kremas.
+          </p>
+        </div>
+
+        <div class="drinks-grid">
+
+          <!-- ROW 1: BARBANCOURT -->
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/5stars-drink.png" alt="Rhum Barbancourt 5 Stars">
+            </button>
+            <div class="card-content">
+              <h3>Rhum Barbancourt — 5 Stars</h3>
+              <p>
+                A distinguished Haitian aged rum renowned for
+                its refined flavor, rich heritage, and exceptional
+                craftsmanship.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/3stars-rhum.png" alt="Rhum Barbancourt 3 Stars">
+            </button>
+            <div class="card-content">
+              <h3>Rhum Barbancourt — 3 Stars</h3>
+              <p>
+                A smooth Haitian rum aged four years, crafted
+                from sugarcane and celebrated for its balanced
+                character and authentic heritage.
+              </p>
+            </div>
+          </article>
+
+          <!-- ROW 2: KREMAS -->
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/coconut-kremas.png" alt="Haitian Kremas Coco">
+            </button>
+            <div class="card-content">
+              <h3>Kremas Coco</h3>
+              <p>
+                A traditional Haitian coconut cream liqueur,
+                delicately blended with warm spices for a
+                smooth and indulgent experience.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/grenadia-kremas.png" alt="Haitian Passion Fruit Kremas">
+            </button>
+            <div class="card-content">
+              <h3>Kremas Grenadya</h3>
+              <p>
+                A delightful tropical variation of traditional
+                Haitian kremas, featuring the vibrant sweetness
+                of passion fruit.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BEVERAGES -->
+
+    <section class="menu-section" id="beverages">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="script-heading">Island Refreshments</p>
+          <h2>Haitian Beverages &amp; Tropical Cocktails</h2>
+          <div class="gold-divider"></div>
+        </div>
+
+        <div class="drinks-grid">
+
+          <!-- ROW 1: BAKARA AND PRESTIGE -->
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/bakara-rhum.png" alt="Bakara Haitian Heritage Drink">
+            </button>
+            <div class="card-content">
+              <h3>Bakara</h3>
+              <p>
+                Our featured Haitian-inspired sugarcane rum blend,
+                infused with citrus and tropical spices for a
+                bold and refreshing taste.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/beer-prestige.png" alt="Haitian Prestige Beer">
+            </button>
+            <div class="card-content">
+              <h3>Prestige Beer</h3>
+              <p>
+                Haiti's iconic lager, offering a crisp,
+                refreshing taste and a proud connection
+                to Haitian brewing heritage.
+              </p>
+            </div>
+          </article>
+
+          <!-- ROW 2: MALTA AND COLA COURONNE -->
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/malta-H.png" alt="Malta H Haitian Malt Beverage">
+            </button>
+            <div class="card-content">
+              <h3>Malta H</h3>
+              <p>
+                A beloved Haitian non-alcoholic malt beverage
+                with a rich, distinctive flavor and a
+                refreshing taste of home.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/cola-couronne.png" alt="Cola Couronne">
+            </button>
+            <div class="card-content">
+              <h3>Cola Couronne</h3>
+              <p>
+                Haiti's beloved tropical soft drink,
+                bringing a sweet, refreshing taste
+                of Haitian tradition.
+              </p>
+            </div>
+          </article>
+
+          <!-- ROW 3: TROPICAL DRINKS -->
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/caribbean-cocktails.png" alt="Caribbean Tropical Cocktails">
+            </button>
+            <div class="card-content">
+              <h3>Tropical Cocktails</h3>
+              <p>
+                A colorful selection of Caribbean-inspired
+                cocktails, featuring tropical fruits,
+                refreshing flavors, and elegant presentation.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <button class="card-image" type="button">
+              <img src="images/diverses-drinks.png" alt="Island Refreshments">
+            </button>
+            <div class="card-content">
+              <h3>Island Refreshments</h3>
+              <p>
+                A refreshing collection of tropical beverages
+                inspired by the vibrant flavors and
+                natural beauty of the Caribbean.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer class="site-footer">
+
+    <h2>Caribbean Gourmet Restaurant</h2>
+
+    <p>
+      A Celebration of Haitian Heritage
+    </p>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Our Menu</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+
+    <p>
+      &copy; 2026 Caribbean Gourmet Restaurant.
+      All Rights Reserved.
+    </p>
+
+  </footer>
+
+  <!-- LIGHTBOX -->
+
+  <div
+    class="lightbox"
+    id="menuLightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menu photograph viewer"
+    aria-hidden="true">
+
+    <button class="lightbox-close" id="lightboxClose"
+      type="button" aria-label="Close lightbox">
+      &times;
+    </button>
+
+    <button class="lightbox-prev" id="lightboxPrev"
+      type="button" aria-label="Previous photograph">
+      &#10094;
+    </button>
+
+    <div class="lightbox-panel">
+
+      <div class="lightbox-photo">
+        <img id="lightboxImage" src="" alt="">
+      </div>
+
+      <div class="lightbox-details">
+        <h2 id="lightboxTitle"></h2>
+        <div class="gold-divider" style="margin-left:0;"></div>
+        <p id="lightboxDescription"></p>
+      </div>
+
+    </div>
+
+    <button class="lightbox-next" id="lightboxNext"
+      type="button" aria-label="Next photograph">
+      &#10095;
+    </button>
+
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      /* MOBILE HAMBURGER MENU */
+
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+
+      menuToggle.addEventListener("click", function () {
+        const isOpen = navLinks.classList.toggle("open");
+
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+
+        menuToggle.innerHTML = isOpen ? "&times;" : "&#9776;";
+      });
+
+      navLinks.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Open navigation menu");
+          menuToggle.innerHTML = "&#9776;";
+        });
+      });
+
+      /* MENU LIGHTBOX */
+
+      const lightbox = document.getElementById("menuLightbox");
+      const lightboxImage = document.getElementById("lightboxImage");
+      const lightboxTitle = document.getElementById("lightboxTitle");
+      const lightboxDescription = document.getElementById("lightboxDescription");
+      const closeButton = document.getElementById("lightboxClose");
+      const previousButton = document.getElementById("lightboxPrev");
+      const nextButton = document.getElementById("lightboxNext");
+
+      const menuImages = Array.from(
+        document.querySelectorAll(".card-image img, .lightbox-trigger")
+      );
+
+      let currentIndex = 0;
+      let previousFocus = null;
+
+      function showImage(index) {
+        currentIndex = (index + menuImages.length) % menuImages.length;
+
+        const selectedImage = menuImages[currentIndex];
+        const card = selectedImage.closest(".menu-card");
+
+        lightboxImage.src = selectedImage.getAttribute("src");
+        lightboxImage.alt = selectedImage.alt;
+
+        if (card) {
+          lightboxTitle.textContent =
+            card.querySelector("h3")?.textContent || selectedImage.alt;
+
+          lightboxDescription.textContent =
+            card.querySelector(".card-content p")?.textContent.trim() || "";
+        } else {
+          lightboxTitle.textContent =
+            selectedImage.dataset.title || selectedImage.alt;
+
+          lightboxDescription.textContent =
+            selectedImage.dataset.description || "";
+        }
+      }
+
+      function openLightbox(index) {
+        previousFocus = document.activeElement;
+
+        showImage(index);
+
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lightbox-open");
+
+        closeButton.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lightbox-open");
+
+        lightboxImage.removeAttribute("src");
+
+        if (previousFocus && typeof previousFocus.focus === "function") {
+          previousFocus.focus();
+        }
+      }
+
+      function nextImage() {
+        showImage(currentIndex + 1);
+      }
+
+      function previousImage() {
+        showImage(currentIndex - 1);
+      }
+
+      menuImages.forEach(function (image, index) {
+        const clickableElement = image.closest(".card-image") || image;
+
+        clickableElement.addEventListener("click", function () {
+          openLightbox(index);
+        });
+
+        if (image.classList.contains("lightbox-trigger")) {
+          image.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              openLightbox(index);
+            }
+          });
+        }
+      });
+
+      closeButton.addEventListener("click", closeLightbox);
+      nextButton.addEventListener("click", nextImage);
+      previousButton.addEventListener("click", previousImage);
+
+      lightbox.addEventListener("click", function (event) {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (!lightbox.classList.contains("open")) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeLightbox();
+        }
+
+        if (event.key === "ArrowRight") {
+          nextImage();
+        }
+
+        if (event.key === "ArrowLeft") {
+          previousImage();
+        }
+
+        if (event.key === "Tab") {
+          const focusable = [
+            closeButton,
+            previousButton,
+            nextButton
+          ];
+
+          const currentPosition = focusable.indexOf(document.activeElement);
+
+          if (event.shiftKey && currentPosition === 0) {
+            event.preventDefault();
+            nextButton.focus();
+          } else if (!event.shiftKey && currentPosition === focusable.length - 1) {
+            event.preventDefault();
+            closeButton.focus();
+          }
+        }
+      });
+
+    });
+  </script>
+
+</body>
+</html>

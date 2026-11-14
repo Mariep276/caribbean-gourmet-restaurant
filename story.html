@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Our Story | Caribbean Gourmet Restaurant</title>
+
+  <link rel="stylesheet" href="app.css">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="story-page">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="index.html" class="logo"
+         aria-label="Caribbean Gourmet Restaurant Home">
+        <img src="images/logo.png"
+             alt="Caribbean Gourmet Restaurant Logo">
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-controls="navLinks"
+        aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="story.html" class="active" aria-current="page">Our Story</a>
+        <a href="menu.html">Menu</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="index.html#vip">VIP Experience</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+   <main>
+
+  <!-- OUR STORY BANNER -->
+  <section class="story-banner" aria-label="Our Story banner">
+    <img
+      src="images/story-banner.png"
+      alt="Caribbean Gourmet Restaurant — Our Story: A Taste of Heritage"
+    >
+  </section>
+
+  <!-- PAGE INTRODUCTION -->
+      <h1>Our Story</h1>
+
+      <p class="story-description">
+        Every remarkable dining experience begins with a story.
+        Ours is rooted in the warmth of Caribbean hospitality,
+        the richness of Haitian traditions, and a passion for
+        bringing people together through unforgettable cuisine.
+      </p>
+    </section>
+
+    <div class="story-container">
+
+      <!-- SECTION ONE: RESTAURANT EXTERIOR -->
+      <section class="story-section">
+
+        <div class="story-image">
+          <img
+            src="images/exterior-restaurant.png"
+            alt="The elegant exterior of Caribbean Gourmet Restaurant">
+        </div>
+
+        <div class="story-text">
+          <p class="story-small-heading">Where It All Began</p>
+
+          <h2>Established in 2018</h2>
+
+          <p>
+            Caribbean Gourmet Restaurant opened its doors in 2018
+            with a simple dream: to create a destination where
+            authentic Caribbean flavors could be enjoyed in an
+            atmosphere of elegance, comfort, and genuine hospitality.
+          </p>
+
+          <p>
+            Inspired by the vibrant culture of Haiti and the
+            beautiful traditions of the Caribbean, our restaurant
+            was imagined as more than a place to dine.
+            It was created as a welcoming retreat where every
+            visit feels like a special occasion.
+          </p>
+        </div>
+
+      </section>
+
+      <!-- SECTION TWO: RESTAURANT INTERIOR -->
+      <section class="story-section story-reverse">
+
+        <div class="story-image">
+          <img
+            src="images/interior-restaurant.png"
+            alt="The luxurious interior dining room of Caribbean Gourmet Restaurant">
+        </div>
+
+        <div class="story-text">
+          <p class="story-small-heading">The Heart of Our Restaurant</p>
+
+          <h2>Tradition Meets Elegance</h2>
+
+          <p>
+            From the inviting beauty of our dining room to the
+            carefully prepared dishes served at every table,
+            Caribbean Gourmet celebrates the connection between
+            culinary heritage and refined dining.
+          </p>
+
+          <p>
+            Our menu honors beloved Haitian favorites while
+            embracing the diverse flavors of the islands.
+            Every meal reflects our commitment to quality,
+            creativity, and the joy of sharing good food
+            with family and friends.
+          </p>
+        </div>
+
+      </section>
+
+      <!-- CLOSING SECTION -->
+      <section class="story-ending">
+
+        <p class="story-small-heading">Our Invitation to You</p>
+
+        <h2>More Than a Restaurant</h2>
+
+        <p>
+          Caribbean Gourmet Restaurant is a celebration of
+          culture, connection, and timeless island hospitality.
+          Whether you join us for an intimate dinner or a
+          memorable gathering, we invite you to become
+          part of our continuing story.
+        </p>
+
+        <a href="menu.html" class="story-button">
+          Explore Our Menu
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer story-footer">
+    <div class="container">
+
+      <p>
+        &copy; 2026 Caribbean Gourmet Restaurant.
+        All Rights Reserved.
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- OUR STORY HAMBURGER MENU -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const button = document.getElementById("menuToggle");
+  const navigation = document.getElementById("navLinks");
+
+  if (!button || !navigation) return;
+
+  button.addEventListener("click", function () {
+    const isOpen = navigation.classList.toggle("open");
+
+    button.classList.toggle("active", isOpen);
+    button.setAttribute("aria-expanded", String(isOpen));
+    button.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
+  });
+
+  navigation.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      navigation.classList.remove("open");
+      button.classList.remove("active");
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-label", "Open navigation menu");
+    });
+  });
+});
+</script>
+</body>
+</html>

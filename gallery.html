@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gallery | Caribbean Gourmet Restaurant</title>
+
+  <meta name="description"
+        content="Explore Caribbean Gourmet Restaurant's elegant dining spaces, professional team, tropical drinks, and authentic Caribbean cuisine.">
+
+  <link rel="stylesheet" href="app.css">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    /* Gallery lightbox — self-contained */
+    #restaurantGalleryLightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 65px 75px;
+      background: rgba(0, 0, 0, 0.96);
+    }
+
+    #restaurantGalleryLightbox.is-visible {
+      display: flex;
+    }
+
+    #restaurantGalleryLightbox .gallery-lightbox-content {
+      width: min(100%, 1100px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    #restaurantGalleryLightbox .gallery-lightbox-image {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border: 2px solid #d4af37;
+      border-radius: 5px;
+      box-shadow: 0 12px 45px rgba(0, 0, 0, 0.5);
+    }
+
+    #restaurantGalleryLightbox .gallery-lightbox-caption {
+      max-width: 850px;
+      color: #f0d78a;
+      font-size: 16px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    #restaurantGalleryLightbox button {
+      position: absolute;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #d4af37;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #f0d78a;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    #restaurantGalleryLightbox button:hover,
+    #restaurantGalleryLightbox button:focus-visible {
+      background: #a77d22;
+      color: #fff;
+    }
+
+    #restaurantGalleryLightbox .gallery-lightbox-close {
+      top: 20px;
+      right: 25px;
+      width: 48px;
+      height: 48px;
+      font-size: 32px;
+    }
+
+    #restaurantGalleryLightbox .gallery-lightbox-prev,
+    #restaurantGalleryLightbox .gallery-lightbox-next {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 60px;
+      font-size: 30px;
+    }
+
+    #restaurantGalleryLightbox .gallery-lightbox-prev {
+      left: 15px;
+    }
+
+    #restaurantGalleryLightbox .gallery-lightbox-next {
+      right: 15px;
+    }
+
+    .gallery-item img[data-gallery-photo] {
+      cursor: zoom-in;
+    }
+
+    @media (max-width: 600px) {
+      #restaurantGalleryLightbox {
+        padding: 65px 45px;
+      }
+
+      #restaurantGalleryLightbox .gallery-lightbox-image {
+        max-height: 62vh;
+      }
+
+      #restaurantGalleryLightbox .gallery-lightbox-caption {
+        font-size: 13px;
+      }
+
+      #restaurantGalleryLightbox .gallery-lightbox-prev,
+      #restaurantGalleryLightbox .gallery-lightbox-next {
+        width: 34px;
+        height: 48px;
+        font-size: 22px;
+      }
+
+      #restaurantGalleryLightbox .gallery-lightbox-prev {
+        left: 5px;
+      }
+
+      #restaurantGalleryLightbox .gallery-lightbox-next {
+        right: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="index.html" class="logo">
+        <img src="images/logo.png"
+             alt="Caribbean Gourmet Restaurant Logo">
+      </a>
+
+      <button class="menu-toggle"
+              id="menuToggle"
+              type="button"
+              aria-label="Toggle navigation"
+              aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="story.html">Our Story</a>
+        <a href="menu.html">Menu</a>
+        <a href="gallery.html" class="active">Gallery</a>
+        <a href="vip.html">VIP Experience</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- GALLERY BANNER -->
+    <section class="gallery-banner"
+      style="background-image:
+      linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45)),
+      url('images/gallery-.png');"
+      aria-label="Caribbean Gourmet Restaurant Gallery">
+    </section>
+
+
+    <!-- GALLERY PHOTOGRAPHS -->
+    <section class="section-padding">
+
+      <div class="container">
+
+        <div class="gallery-grid">
+
+          <!-- ROW 1: RESTAURANT AND INTERIORS -->
+
+          <div class="gallery-item">
+            <img src="images/exterior-restaurant.png"
+                 alt="Caribbean Gourmet Restaurant exterior"
+                 loading="lazy"
+                 data-gallery-photo
+                 data-caption="Our Restaurant — A beautiful Caribbean-inspired destination welcoming guests into a world of elegance.">
+
+            <div class="gallery-overlay">
+              <h3>Our Restaurant</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/interior-restaurant.png"
+                 alt="Elegant Caribbean Gourmet dining room"
+                 loading="lazy"
+                 data-gallery-photo
+                 data-caption="Elegant Dining — Experience sophisticated interiors, warm lighting, and Caribbean hospitality.">
+
+            <div class="gallery-overlay">
+              <h3>Elegant Dining</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/vip-corner.png"
+                 alt="Exclusive Caribbean Gourmet VIP dining room"
+                 loading="lazy"
+                 data-gallery-photo
+                 data-caption="VIP Experience — An exclusive private dining atmosphere designed for unforgettable occasions.">
+
+            <div class="gallery-overlay">
+              <h3>VIP Experience</h3>
+            </div>
+          </div>
+
+
+          <!-- ROW 2: PEOPLE AND STAFF -->
+
+          <div class="gallery-item">
+            <img src="images/restaurant-staff.png"
+                 alt="Caribbean Gourmet Restaurant team"
+                 loading="lazy"
+                 data-gallery-photo
+                 data-caption="Our Team — Dedicated professionals bringing warmth, hospitality, and excellence to every experience.">
+
+            <div class="gallery-overlay">
+              <h3>Our Team</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/friends-gathered.png"
+                 alt="Elegantly dressed guests enjoying dinner"
+                 loading="lazy"
+                 data-gallery-photo
+                 data-caption="Memorable Gatherings — Beautiful evenings shared with friends and loved ones in an elegant Caribbean atmosphere.">
+
+            <div class="gallery-overlay">
+              <h3>Memorable Gatherings</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/restaurant-kitchen.png"
+                 alt="Caribbean Gourmet professional kitchen"
+                 loading="lazy"
+                 data-gallery-photo
+                 data-caption="Behind the Flavors — Our talented culinary team preparing exceptional Caribbean-inspired creations.">
+
+            <div class="gallery-overlay">
+              <h3>Behind the Flavors</h3>
+            </div>
+          </div>
+
+
+          <!-- ROW 3: CARIBBEAN DRINKS -->
+
+          <div class="gallery-item">
+            <img src="images/caribbean-cocktails.png"
+                 alt="Colorful Caribbean cocktails"
+                 loading="lazy"
+                 data-gallery-photo
+                 data-caption="Tropical Cocktails — Colorful island-inspired cocktails crafted with Caribbean flair.">
+
+            <div class="gallery-overlay">
+              <h3>Tropical Cocktails</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/cola-couronne.png"
+                 alt="Traditional Haitian Cola Couronne"
+                 loading="lazy"
+                 data-gallery-photo
+                 data-caption="Cola Couronne — Celebrate Haiti's beloved tropical soft drink, served with Caribbean elegance.">
+
+            <div class="gallery-overlay">
+              <h3>Cola Couronne</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/diverses-drinks.png"
+                 alt="Selection of colorful Caribbean beverages"
+                 loading="lazy"
+                 data-gallery-photo
+                 data-caption="Island Refreshments — A vibrant selection of refreshing drinks inspired by the Caribbean.">
+
+            <div class="gallery-overlay">
+              <h3>Island Refreshments</h3>
+            </div>
+          </div>
+
+
+          <!-- ROW 4: CARIBBEAN CUISINE -->
+
+          <div class="gallery-item">
+            <img src="images/red-snipper-red-lobster.png"
+                 alt="Caribbean red snapper and lobster"
+                 loading="lazy"
+                 data-gallery-photo
+                 data-caption="Gourmet Seafood — Fresh Caribbean red snapper and succulent lobster with tropical garnishes.">
+
+            <div class="gallery-overlay">
+              <h3>Gourmet Seafood</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/haitian-dish.png"
+                 alt="Traditional Haitian legume with rice and beans"
+                 loading="lazy"
+                 data-gallery-photo
+                 data-caption="Authentic Haitian Cuisine — Traditional Haitian legume served with rice, creamy beans, and fresh vegetables.">
+
+            <div class="gallery-overlay">
+              <h3>Authentic Haitian Cuisine</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/pumpkin-soup.png"
+                 alt="Traditional Haitian Soup Joumou"
+                 loading="lazy"
+                 data-gallery-photo
+                 data-caption="Soup Joumou — Haiti's Independence Day Soup, a cherished symbol of freedom and independence since 1804.">
+
+            <div class="gallery-overlay">
+              <h3>Soup Joumou — Independence Day 1804</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- RESERVATION INVITATION -->
+    <section class="section-padding gallery-invitation">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="section-script">
+            Experience It Yourself
+          </p>
+
+          <h2>
+            Make Your Next Moment Unforgettable
+          </h2>
+
+          <p>
+            Discover authentic Caribbean flavors in an atmosphere
+            of warmth, elegance, and exceptional hospitality.
+          </p>
+
+          <a href="contact.html" class="btn btn-gold">
+            Reserve Your Table
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- GALLERY LIGHTBOX -->
+  <div id="restaurantGalleryLightbox"
+       role="dialog"
+       aria-modal="true"
+       aria-label="Restaurant photo gallery"
+       aria-hidden="true">
+
+    <button type="button"
+            class="gallery-lightbox-close"
+            aria-label="Close image">&times;</button>
+
+    <button type="button"
+            class="gallery-lightbox-prev"
+            aria-label="Previous image">&#10094;</button>
+
+    <div class="gallery-lightbox-content">
+      <img class="gallery-lightbox-image" src="" alt="">
+      <p class="gallery-lightbox-caption"></p>
+    </div>
+
+    <button type="button"
+            class="gallery-lightbox-next"
+            aria-label="Next image">&#10095;</button>
+
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="container">
+
+      <div class="footer-content">
+
+        <div class="footer-brand">
+
+          <img src="images/logo.png"
+               alt="Caribbean Gourmet Restaurant">
+
+          <p>
+            Where Caribbean Flavors Meet Timeless Elegance.
+          </p>
+
+        </div>
+
+        <div class="footer-links">
+
+          <h3>Explore</h3>
+
+          <a href="index.html">Home</a>
+          <a href="our-story.html">Our Story</a>
+          <a href="menu.html">Menu</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="vip.html">VIP Experience</a>
+          <a href="contact.html">Contact</a>
+
+        </div>
+
+        <div class="footer-social">
+
+          <h3>Follow Our Journey</h3>
+
+          <div class="social-icons">
+
+            <a href="https://www.facebook.com/"
+               aria-label="Facebook"
+               target="_blank"
+               rel="noopener noreferrer">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="https://www.instagram.com/"
+               aria-label="Instagram"
+               target="_blank"
+               rel="noopener noreferrer">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="https://www.pinterest.com/"
+               aria-label="Pinterest"
+               target="_blank"
+               rel="noopener noreferrer">
+              <i class="fa-brands fa-pinterest-p"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <p>
+          &copy; 2026 Caribbean Gourmet Restaurant.
+          All Rights Reserved.
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- SHARED JAVASCRIPT: NAVIGATION -->
+  <script src="app.js" defer></script>
+
+  <!-- GALLERY-ONLY LIGHTBOX -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const photos = Array.from(
+        document.querySelectorAll("[data-gallery-photo]")
+      );
+
+      const overlay = document.getElementById(
+        "restaurantGalleryLightbox"
+      );
+
+      const largeImage = overlay.querySelector(
+        ".gallery-lightbox-image"
+      );
+
+      const caption = overlay.querySelector(
+        ".gallery-lightbox-caption"
+      );
+
+      const closeButton = overlay.querySelector(
+        ".gallery-lightbox-close"
+      );
+
+      const previousButton = overlay.querySelector(
+        ".gallery-lightbox-prev"
+      );
+
+      const nextButton = overlay.querySelector(
+        ".gallery-lightbox-next"
+      );
+
+      let currentIndex = 0;
+      let lastFocusedElement = null;
+
+      function displayPhoto(index) {
+        currentIndex = (index + photos.length) % photos.length;
+
+        const photo = photos[currentIndex];
+
+        largeImage.src = photo.dataset.full || photo.src;
+        largeImage.alt = photo.alt;
+
+        caption.textContent =
+          photo.dataset.caption || photo.alt;
+      }
+
+      function openGallery(index) {
+        lastFocusedElement = document.activeElement;
+
+        displayPhoto(index);
+
+        overlay.classList.add("is-visible");
+        overlay.setAttribute("aria-hidden", "false");
+
+        document.body.style.overflow = "hidden";
+
+        closeButton.focus();
+      }
+
+      function closeGallery() {
+        overlay.classList.remove("is-visible");
+        overlay.setAttribute("aria-hidden", "true");
+
+        document.body.style.overflow = "";
+
+        if (lastFocusedElement) {
+          lastFocusedElement.focus();
+        }
+      }
+
+      photos.forEach(function (photo, index) {
+        photo.setAttribute("tabindex", "0");
+        photo.setAttribute("role", "button");
+
+        photo.addEventListener("click", function () {
+          openGallery(index);
+        });
+
+        photo.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openGallery(index);
+          }
+        });
+      });
+
+      closeButton.addEventListener("click", closeGallery);
+
+      previousButton.addEventListener("click", function () {
+        displayPhoto(currentIndex - 1);
+      });
+
+      nextButton.addEventListener("click", function () {
+        displayPhoto(currentIndex + 1);
+      });
+
+      overlay.addEventListener("click", function (event) {
+        if (event.target === overlay) {
+          closeGallery();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (!overlay.classList.contains("is-visible")) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeGallery();
+        }
+
+        if (event.key === "ArrowLeft") {
+          displayPhoto(currentIndex - 1);
+        }
+
+        if (event.key === "ArrowRight") {
+          displayPhoto(currentIndex + 1);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
